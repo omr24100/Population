@@ -1,0 +1,16 @@
+#ifndef POPULATION_H
+#define POPULATION_H
+
+
+int getStartingPopulation();
+
+
+double getDailyIncrease();
+
+
+int getNumberOfDays();
+
+
+void predictPopulation(int startingPopulation, double dailyIncrease, int days);
+
+#endif
