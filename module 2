@@ -1,0 +1,57 @@
+#include "population.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+
+int getStartingPopulation() {
+    int startingPopulation;
+    do {
+        cout << "Enter the starting number of organisms (must be at least 2): ";
+        cin >> startingPopulation;
+        if (startingPopulation < 2) {
+            cout << "The starting population must be at least 2. Please try again." << endl;
+        }
+    } while (startingPopulation < 2);
+    return startingPopulation;
+}
+
+
+double getDailyIncrease() {
+    double dailyIncrease;
+    do {
+        cout << "Enter the average daily population increase (as a percentage, e.g., 10 for 10%): ";
+        cin >> dailyIncrease;
+        if (dailyIncrease < 0) {
+            cout << "The daily population increase cannot be negative. Please try again." << endl;
+        }
+    } while (dailyIncrease < 0);
+    return dailyIncrease;
+}
+
+
+int getNumberOfDays() {
+    int days;
+    do {
+        cout << "Enter the number of days they will multiply (must be at least 1): ";
+        cin >> days;
+        if (days < 1) {
+            cout << "The number of days must be at least 1. Please try again." << endl;
+        }
+    } while (days < 1);
+    return days;
+}
+
+// Function to calculate and display the population over the days
+void predictPopulation(int startingPopulation, double dailyIncrease, int days) {
+    double population = startingPopulation;
+    cout << fixed << setprecision(2); // Format the output to 2 decimal places
+    cout << "\nDay\tPopulation Size" << endl;
+    cout << "----------------------------" << endl;
+
+    for (int i = 1; i <= days; i++) {
+        cout << i << "\t" << population << endl;
+        population += population * (dailyIncrease / 100);  // Increase population by the percentage
+    }
+}
